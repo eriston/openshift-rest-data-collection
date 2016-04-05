@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block body %}
+<div id="main" class="container">
+    <h2>All Uploaded Data Points</h2>
+    <table class="table table-hover">
+      <tr>
+        <th>id
+        <th>Date Upload
+        <th>device_id (str)
+        <th>session_id (int)<br/>unix time at start
+        <th>sensor_id (str)
+        <th>sensor_value (float)
+        <th>sensor_timestamp (int)
+        <th>notes (str)
+      {%- for pnt in datpts %}
+      <tr>
+        <td>{{ pnt.id }}</td>
+        <td>{{ pnt.pub_date.strftime('%Y-%m-%d %H:%M') }}</td>
+        <td>{{ pnt.device_id }}</td>
+        <td>{{ pnt.session_id }}</td>
+        <td>{{ pnt.sensor_id }}</td>
+        <td>{{ pnt.sensor_value }}</td>
+        <td>{{ pnt.sensor_timestamp }}</td>
+        <td>{{ pnt.notes }}</td>
+      {%- endfor %}
+    </table>
+    <p>
+</div>
+{% endblock %}
